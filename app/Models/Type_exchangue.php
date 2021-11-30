@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Type_exchangue extends Model
 {
     use HasFactory;
+
+    public function exchanges()
+     {
+        return $this->hasMany(Exchangue::class);
+    }
 }

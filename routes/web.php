@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,12 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::resource('users', UserController::class)->names('users');
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
+    Route::resource('products', ProductController::class)->names('products');
+
+    Route::get('/', [UserController::class, 'index'])->name('home');
+    
+});

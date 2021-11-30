@@ -43,3 +43,8 @@
         </div>
     </div>
 </x-app-layout>
+
+{{-- @extends('layouts.app')
+@section('content')
+    
+@endsection --}}
