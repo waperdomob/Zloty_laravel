@@ -17,7 +17,7 @@
                     <div class="i">
                     <i class="fas fa-border-style"></i>
                     </div>
-                    <a class="nav-link letracolor " href="#" style="color: #ffffff;">
+                    <a class="nav-link letracolor " href="{{ route('products.show',Auth::user()->id)}}" style="color: #ffffff;">
                         Tablas de productos</a>
                 </li>
                 <li class="nav-item correrUser">

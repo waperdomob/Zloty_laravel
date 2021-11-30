@@ -4,7 +4,7 @@
       <footer class="content-footer">
 
         <a href="https://www.facebook.com/fundacionbellaflor">
-            <img src="img/logoBellaFlor.png" alt="" width="190px" height="100px">
+            <img src="{{  asset('img/logoBellaFlor.png')}}" alt="" width="190px" height="100px">
         </a>
         <div>
             <h2 class="titulo-final">&copy; Fundación Bella Flor | Grup-Zloty</h2>
@@ -12,7 +12,7 @@
                 <script src="{{ asset('js/time.js') }}"></script>
             </div>
         </div>
-        <img src="img/bigblanco.png" alt="" width="180px" height="100px">
+        <img src="{{  asset('img/bigblanco.png')}}" alt="" width="180px" height="100px">
     </footer>
 
     <!------- js de bootstrap------------------- -->

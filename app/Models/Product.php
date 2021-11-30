@@ -32,7 +32,7 @@ class Product extends Model
     }
     public function exchanges()
     {
-        return $this->hasMany(Exchangue::class);
+        return $this->hasMany(Exchangue::class,'product_id');
     }
 
 }

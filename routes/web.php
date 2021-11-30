@@ -19,12 +19,16 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
+    return view('user.index');
+})->name('home');
+
 Route::resource('users', UserController::class)->names('users');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('products', ProductController::class)->names('products');
 
-    Route::get('/', [UserController::class, 'index'])->name('home');
+    Route::get('/home', [UserController::class, 'index'])->name('home');
     
 });

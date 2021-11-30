@@ -37,13 +37,18 @@
                         <div class="form-group">
                             <input type="number" name="stocks"  class="form-control" placeholder="Cantidad" required >
                         </div>
-                       
+                        <div class="form-group">
+                            @if ( $user_id )
+                                <input id="user_id" class="form-control" type="number" name="user_id"  value="{{ $user_id }}" hidden>
+                            @endif    
+                        </div>
                         <div>
                         <class class="from-group">
-                            <select name="type_Exchangue" class="form-control" placeholder="Tipo de Intercambio" method="post" required >
+                            <select name="type_exchangue_id" class="form-control" placeholder="Tipo de Intercambio" method="post" required >
                                 <option value="">Tipo de Intercambio</option>
-                                <option value="Juguetes" >Donacion</option>
-                                <option value="Accesorios">Trueque</option>
+                                @foreach ($type_Exchangues as $type_Exchangue)
+                                    <option value="{{ $type_Exchangue->id }}" >{{ $type_Exchangue->type_exchangues }}</option>
+                                @endforeach 
                             </select>
                         </class>
                         </div>
@@ -72,7 +77,9 @@
                         <br>   
                         <input type="file" class="form-control" name="image" id="image" value=""><br> <br>
                         <br> 
-                        <input name="guardar" type="submit" class="btn btn-success btn-block" value="Guardar Producto" style=" background: orange;" />
+                        <div class="col-sm">
+                            <input type="submit" class="btn colorBoton" value="Realizar intercambio">
+                          </div>
 
                     </center>       
                       

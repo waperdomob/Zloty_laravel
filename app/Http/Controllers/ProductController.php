@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\State;
+use App\Models\Type_exchangue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -28,10 +31,12 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $user = auth()->user();
+        $user_id = auth()->user()->id;
         $categories = Category::all();
         $states = State::all();
-        return view('product.create',['product' => new Product(),'user'=>$user,'categories'=>$categories,'states'=>$states]);
+        $type_Exchangues = Type_exchangue::all();
+
+        return view('product.create',['product' => new Product(),'user_id'=>$user_id,'categories'=>$categories,'states'=>$states,'type_Exchangues'=>$type_Exchangues]);
     }
 
     /**
@@ -42,18 +47,40 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $user = auth()->user();
-        return $request;
-        $product = request()->except('_token');
+        
+        $product = request()->except('_token','type_exchangue_id');
+        if ($request['type_exchangue_id'] == 'donacion') {
+                
+            if ($request->hasfile('image')) {
 
-        if ($request->hasfile('image')) {
+                    $product['image'] = $request->file('image')->store('uploads','public');
+            }
+            $id = DB::table('products')->insertGetId($product);
+            DB::table('exchangues')
+            ->insert([
+                'quantity' => $request['stocks'],
+                'type_exchangue_id' => $request['type_exchangue_id'],
+                'user_id' => $request['user_id'],
+                'product_id' => $id
+            ]);
+            return redirect()->route('users.index');
+            
+        } 
+        else{
+            if ($request->hasfile('image')) {
+
                 $product['image'] = $request->file('image')->store('uploads','public');
-        }
-        Product::insert($product);
-        
-        return redirect()->route('empleado.index')->with('mensaje','El empleado fue agregado con exito');
-        
-
+            }
+            $id = DB::table('products')->insertGetId($product);
+            DB::table('exchangues')
+            ->insert([
+                'quantity' => $request['stocks'],
+                'type_exchangue_id' => $request['type_exchangue_id'],
+                'user_id' => $request['user_id'],
+                'product_id' => $id
+            ]);
+                return redirect()->route('users.index');
+            }
     }
 
     /**
@@ -64,7 +91,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $products = Product::where('user_id','=',$id)->with('category','state')->get();
+        //return $products;
+        return view('product.list', ['products'=>$products]);
     }
 
     /**

@@ -35,7 +35,7 @@ html body{
     font-size: 20px;
 }
 
-.fa-bars {
+.fa-fars {
     font-size: 30px;
     color: #ffffff;
 }
@@ -43,18 +43,18 @@ html body{
 .colorBoton {
     background-color: #ec7607f6;
     color: aliceblue;
-    justify-content: center;
     width: 100%;
+    justify-content: center;    
     font-size: 18px;
     margin-left: 20%;
     margin-top: 5%;
 }
-.colorBoton:hover {
+/* .colorBoton:hover {
     border: white;
     background-color: #2a2a2cf6;
     color: aliceblue;
 }
-
+ */
 .submenucategoria{
     background-color:transparent;
     border: #d8670bd9;

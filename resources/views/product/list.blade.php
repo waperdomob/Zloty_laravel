@@ -5,7 +5,7 @@
 
 <nav id="menu" class="navbar navbar-expand-lg bg-pink">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{route('users.index')}}">
             <img src="/img/bigblanco.png" alt="" height="80px" width="160px">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -20,7 +20,7 @@
                     <div class="i">
                         <i class="fas fa-user-friends"></i>
                     </div>
-                    <a class="nav-link btn btn-link" href="../Vista/php/logueado.php" style="color: #ffffff;">
+                    <a class="nav-link btn btn-link" href="{{route('users.index')}}" style="color: #ffffff;">
                       Volver</a>
                 </li>
             </ul>
@@ -51,18 +51,18 @@
     <tbody>
         <tr>
             <?php
-                foreach ($matrizproducto as $fila) {
+                foreach ($products as $product) {
             ?>
-                <td><?php echo $fila['idProducto']; ?></td>       
-                <td><?php echo $fila['nombreProducto']; ?></td>
-                <td><?php echo $fila['descripcionProducto']; ?></td>
-                <td class="text-center"><?php echo $fila['Existencias']; ?></td>
-                <td class="text-center"><?php echo $fila['TipoCategoria']; ?></td>
-                <td class="text-center"><?php echo $fila['estado']; ?></td>
+                <td>{{$product->id}}</td>       
+                <td>{{$product->name}}</td>
+                <td>{{$product->description}}</td>
+                <td class="text-center">{{$product->stocks}}</td>
+                <td class="text-center">{{$product->category['category']}}</td>
+                <td class="text-center">{{$product->state['states']}}</td>
                 <td>
-                    <img src="data:image/jpg;base64,<?php echo base64_encode($fila['imagesf']); ?>">
+                    <img src="{{ asset('storage'.'/'.$product->image)}}" class="card-img-top" alt="..."  height="120">
                 </td>
-                <td width="136" scope="col" ><a class="btn btn-warning text-center" id="colorbuttom" href="../Controlador/Cmodificarproducto.php?idProducto=<?php echo $fila['idProducto'];?>">Modificar</a></td>
+                <td width="136" scope="col" ><a class="btn btn-warning text-center" id="colorbuttom" href="#">Modificar</a></td>
         </tr>
             <?php
                 }
@@ -71,7 +71,8 @@
 </table>
 </div>
     <center>      
-        <a href="../Vista/php/logueado.php" id="colorbuttom" class="btn btn-warning ">FINALIZAR</a> 
+        <a href="#" id="colorbuttom" class="btn btn-warning ">FINALIZAR</a> 
     </center>  
 
+    @include('layouts.plantilla.footer') 
 @endsection
