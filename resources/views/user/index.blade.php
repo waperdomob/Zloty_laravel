@@ -22,7 +22,7 @@
                         
                         <i class="fas fa-border-style"></i>
                         
-                        <a class="nav-link letracolor " href="#" style="color: #ffffff;">
+                        <a class="nav-link letracolor " href="{{ route('products.show',Auth::user()->id)}}" style="color: #ffffff;">
                             Tablas de productos</a>
                     </li>
                     <li class="nav-item correrUsers">
@@ -38,7 +38,7 @@
                         @if (Auth::user()->profile_photo_path)
                             <img class="fas h-8 w-8 rounded-full object-cover imagen-perfil" src="/storage/{{Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}" />
                         @else
-                            <img class="h-8 w-8 rounded-full object-cover imagen-perfil" src="{{Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> 
+                            <img class="fas h-8 w-8 rounded-full object-cover imagen-perfil" src="{{Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> 
                         @endif
                             
                         

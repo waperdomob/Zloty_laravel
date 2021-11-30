@@ -74,7 +74,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         
-        
         $userData = $request->except(['_token','_method','photo']);
         $profile_photo_path = request()->get('photo');
 
@@ -88,7 +87,7 @@ class UserController extends Controller
         User::where('id','=',$id)->update($userData);
 
         $user = User::findOrfail($id);
-        return redirect()->route('users.edit',compact('user'))->with('mensaje','El empleado ha sido actualizado');
+        return redirect()->route('users.edit',compact('user')) ;
     }
 
     /**
