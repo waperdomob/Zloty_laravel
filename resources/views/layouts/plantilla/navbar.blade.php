@@ -20,10 +20,13 @@
                     <a class="nav-link letracolor " href="{{ route('products.show',Auth::user()->id)}}" style="color: #ffffff;">
                         Tablas de productos</a>
                 </li>
-                <li class="nav-item correrUser">
-                    <div class="i">
-                        <i class="fas fa-border-style"></i>
-                    </div> 
+                <li class="nav-item correrUsers">
+                        
+                   {{--  @if (Auth::user()->profile_photo_path)
+                        <img class="fas h-8 w-8 rounded-full object-cover imagen-perfil" src="/storage/{{Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}" />
+                    @else
+                        <img class="fas h-8 w-8 rounded-full object-cover imagen-perfil" src="{{Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> 
+                    @endif --}}
                     <a class="nav-link letracolor" href="{{ route('users.edit',Auth::user()->id) }}" style="color: #ffffff;">
                         {{ Auth::user()->name }}
                     </a>
