@@ -24,10 +24,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
 })->name('home');
 
 Route::resource('users', UserController::class)->names('users');
-
+Route::put('/products/{id}',[ProductController::class])->name('products.exchange');
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('products', ProductController::class)->names('products');
+    Route::put('/products/{id}',[ProductController::class, 'exchange'])->name('products.exchange');
 
     Route::get('/home', [UserController::class, 'index'])->name('home');
     

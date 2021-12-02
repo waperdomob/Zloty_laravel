@@ -49,10 +49,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <?php
-                foreach ($products as $product) {
-            ?>
+        @foreach ($products as $product) 
+            <tr>
                 <td>{{$product->id}}</td>       
                 <td>{{$product->name}}</td>
                 <td>{{$product->description}}</td>
@@ -62,16 +60,14 @@
                 <td>
                     <img src="{{ asset('storage'.'/'.$product->image)}}" class="card-img-top" alt="..."  height="120">
                 </td>
-                <td width="136" scope="col" ><a class="btn btn-warning text-center" id="colorbuttom" href="#">Modificar</a></td>
-        </tr>
-            <?php
-                }
-            ?> 
+                <td width="136" scope="col" ><a class="btn btn-warning text-center" id="colorbuttom" href="{{ route('products.edit',$product)}}">Modificar</a></td>
+            </tr>
+        @endforeach   
     </tbody>
 </table>
 </div>
     <center>      
-        <a href="#" id="colorbuttom" class="btn btn-warning ">FINALIZAR</a> 
+        <a href="{{ route('users.index')}}" id="colorbuttom" class="btn btn-warning ">FINALIZAR</a> 
     </center>  
 
     @include('layouts.plantilla.footer') 

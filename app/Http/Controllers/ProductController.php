@@ -65,7 +65,7 @@ class ProductController extends Controller
             ]);
             return redirect()->route('users.index');
             
-        } 
+        }
         else{
             if ($request->hasfile('image')) {
 
@@ -79,10 +79,21 @@ class ProductController extends Controller
                 'user_id' => $request['user_id'],
                 'product_id' => $id
             ]);
-                return redirect()->route('users.index');
+                $products = Product::where('user_id','!=',$request['user_id'])->with('category','state')->get();
+                return view('product.exchange',['products'=>$products,'user'=>$request['user_id']]);
             }
     }
 
+    public function exchange($id)
+    {
+        $product = Product::findOrfail($id);
+        if($product->stocks > 0)
+        {
+            $stocks = $product->stoks - 1;
+            Product::where('id','=',$id)->update(['stocks'=> $stocks]);
+            return redirect()->route('users.index');
+        }
+    }
     /**
      * Display the specified resource.
      *
@@ -102,9 +113,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        $user_id = auth()->user()->id;
+        $categories = Category::all();
+        $states = State::all();
+        return view('product.edit',['product'=>$product,'user_id'=>$user_id,'categories'=>$categories,'states'=>$states]);
     }
 
     /**
@@ -116,7 +130,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //return $id;
+        $dataProduct = $request->except(['_token','_method']);
+
+        if ($request->hasfile('photo')) {
+            $product = Product::findOrfail($id);
+            Storage::delete(['public/'. $product->image]);
+            $dataProduct['image'] = $request->file('image')->store('uploads','public');
+        }
+        Product::where('id','=',$id)->update($dataProduct);
+        $product = Product::findOrfail($id);
+        //return redirect()->route('empleado.index',$empleado);
+        return redirect()->route('users.index');
     }
 
     /**
