@@ -13,18 +13,23 @@ class CreateExchanguesTable extends Migration
      */
     public function up()
     {
-        Schema::create('exchangues', function (Blueprint $table) {
+        Schema::create('exchanges', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantity');
 
-            $table->unsignedBigInteger('type_exchangue_id')->nullable();
-            $table->foreign('type_exchangue_id')->references('id')->on('type_exchangues');
-
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->unsignedBigInteger('product_id')->nullable();
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->unsignedBigInteger('type_exchange_id');
+            $table->foreign('type_exchange_id')->references('id')->on('type_exchanges');
+
+            $table->unsignedBigInteger('exchange_state_id');
+            $table->foreign('exchange_state_id')->references('id')->on('exchange_state');
+
+            $table->unsignedBigInteger('input_id');
+            $table->foreign('input_id')->references('id')->on('inputs');
+
+            $table->unsignedBigInteger('output_id')->nullable();
+            $table->foreign('output_id')->references('id')->on('outputs');
             
             $table->timestamps();
         });

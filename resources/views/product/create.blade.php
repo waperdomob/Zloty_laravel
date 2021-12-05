@@ -44,10 +44,10 @@
                         </div>
                         <div>
                         <class class="from-group">
-                            <select name="type_exchangue_id" class="form-control" placeholder="Tipo de Intercambio" method="post" required >
+                            <select name="type_exchange_id" class="form-control" placeholder="Tipo de Intercambio" method="post" required >
                                 <option value="">Tipo de Intercambio</option>
-                                @foreach ($type_Exchangues as $type_Exchangue)
-                                    <option value="{{ $type_Exchangue->id }}" >{{ $type_Exchangue->type_exchangues }}</option>
+                                @foreach ($type_Exchanges as $type_Exchange)
+                                    <option value="{{ $type_Exchange->id }}" >{{ $type_Exchange->type_exchanges }}</option>
                                 @endforeach 
                             </select>
                         </class>
@@ -74,6 +74,12 @@
                             </select>
                         </class>
                         <br>
+                        <div class="form-group">
+                                <label for="" style="color: white">Fecha de donación</label>
+                                <input id="date" class="form-control" type="date" name="date"  placeholder="">
+                               
+                        </div>
+                        <div>
                         <br>   
                         <input type="file" class="form-control" name="image" id="image" value=""><br> <br>
                         <br> 

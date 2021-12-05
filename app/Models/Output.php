@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Type_exchangue extends Model
+class Output extends Model
 {
     use HasFactory;
-
-    public function exchanges()
+    public function product()
      {
-        return $this->hasMany(Exchangue::class);
+        return $this->hasOne(Product::class,'product_id');
     }
 }

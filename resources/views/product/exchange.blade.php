@@ -38,7 +38,15 @@
                         <form method="POST" action="{{ route('products.exchange',$product->id) }}">
                             {{ method_field('PUT') }}
                             {{ csrf_field() }}
-                        
+                            <div class="form-group">
+                                <label for="">Cantidad a intercambiar</label>
+                                <input type="number" name="quantity"  class="form-control" placeholder="Cantidad" required >
+                            </div>
+                            <div class="form-group">
+                                @if ( $exchange_id )
+                                    <input id="exchange_id" class="form-control" type="number" name="exchange_id"  value="{{ $exchange_id }}" hidden>
+                                @endif    
+                            </div>
                             <input type="submit" value="Intercambiar" class="btn btn-warning">
                         </form>
                     </td>
