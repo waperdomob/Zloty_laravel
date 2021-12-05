@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Type_exchangue extends Model
+class Input extends Model
 {
     use HasFactory;
-
-    public function exchanges()
+    public function exchange()
      {
-        return $this->hasMany(Exchangue::class);
+        return $this->hasOne(Exchange::class,'input_id');
     }
 }

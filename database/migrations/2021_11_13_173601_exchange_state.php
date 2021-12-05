@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypeExchanguesTable extends Migration
+class ExchangeState extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTypeExchanguesTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_exchanges', function (Blueprint $table) {
+        Schema::create('exchange_states', function (Blueprint $table) {
             $table->id();
-            $table->string('type_exchange');
+            $table->string('exchange_state');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateTypeExchanguesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_exchanges');
+        Schema::dropIfExists('exchange_states');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,8 @@ class UserController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('user.index',compact('user'));
+        $products = Product::paginate(5);
+        return view('user.index',compact('user','products'));
     }
 
     /**

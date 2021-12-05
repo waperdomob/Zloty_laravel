@@ -30,9 +30,7 @@ class Product extends Model
      {
         return $this->belongsTo(State::class,'state_id');
     }
-    public function exchanges()
-    {
-        return $this->hasMany(Exchangue::class,'product_id');
-    }
+    
+    
 
 }
