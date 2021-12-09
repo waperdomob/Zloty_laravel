@@ -10,20 +10,12 @@ class Exchange extends Model
     use HasFactory;
     protected $fillable = [
         
-<<<<<<< HEAD
-        'user_id',
-        'type_exchange_id',
-        'exchange_state',
-        'input_id',
-        'output_id',
-=======
         
         'user_id',
         'input_id',
         'output_id',
         'type_exchange_id',
         'exchange_state',
->>>>>>> 41f23af29e8f793018d0a766065de5076b32313f
     ];
     
     public function user()
@@ -36,17 +28,6 @@ class Exchange extends Model
     }
     public function output()
      {
-<<<<<<< HEAD
-        return $this->hasOne(Output::class,'output_id');
-    }
-    public function type_Exchange()
-     {
-        return $this->belongsTo(Type_exchange::class,'type_exchange_id');
-    }
-    public function Exchange_state()
-     {
-        return $this->belongsTo(Type_exchangue::class,'exchange_state_id');
-=======
         return $this->hasOne(Output::class,'input_id');
     }
     public function typeExchange()
@@ -56,6 +37,5 @@ class Exchange extends Model
     public function exchange_state()
      {
         return $this->belongsTo(Exchange_state::class,'exchange_state_id');
->>>>>>> 41f23af29e8f793018d0a766065de5076b32313f
     }
 }
