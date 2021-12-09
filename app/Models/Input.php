@@ -8,12 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Input extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
-
-    public function product()
-     {
-        return $this->hasOne(Product::class,'product_id');
-=======
     public function exchange()
      {
         return $this->hasOne(Exchange::class,'input_id');
@@ -21,7 +15,6 @@ class Input extends Model
     public function product()
      {
         return $this->belongsTo(Product::class,'product_id');
->>>>>>> 41f23af29e8f793018d0a766065de5076b32313f
     }
 
 }

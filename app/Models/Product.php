@@ -30,18 +30,7 @@ class Product extends Model
      {
         return $this->belongsTo(State::class,'state_id');
     }
-<<<<<<< HEAD
-    public function input()
-    {
-        return $this->hasOne(Input::class,'product_id');
-    }
-    public function output()
-    {
-        return $this->hasOne(Output::class,'product_id');
-    }
-=======
     
     
->>>>>>> 41f23af29e8f793018d0a766065de5076b32313f
 
 }
