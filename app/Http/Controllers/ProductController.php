@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Exchange;
 use App\Models\Product;
 use App\Models\State;
-use App\Models\Type_exchangue;
+use App\Models\Type_exchange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -34,9 +35,9 @@ class ProductController extends Controller
         $user_id = auth()->user()->id;
         $categories = Category::all();
         $states = State::all();
-        $type_Exchangues = Type_exchangue::all();
+        $type_Exchanges = Type_exchange::all();
 
-        return view('product.create',['product' => new Product(),'user_id'=>$user_id,'categories'=>$categories,'states'=>$states,'type_Exchangues'=>$type_Exchangues]);
+        return view('product.create',['product' => new Product(),'user_id'=>$user_id,'categories'=>$categories,'states'=>$states,'type_Exchanges'=>$type_Exchanges]);
     }
 
     /**
@@ -48,20 +49,26 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         
-        $product = request()->except('_token','type_exchangue_id');
-        if ($request['type_exchangue_id'] == 'donacion') {
+        $product = request()->except('_token','type_exchange_id','date');
+        
+        if ($request['type_exchange_id'] == '1') {
                 
             if ($request->hasfile('image')) {
 
                     $product['image'] = $request->file('image')->store('uploads','public');
             }
             $id = DB::table('products')->insertGetId($product);
-            DB::table('exchangues')
-            ->insert([
+            $input_id = DB::table('inputs')
+            ->insertGetId([
                 'quantity' => $request['stocks'],
-                'type_exchangue_id' => $request['type_exchangue_id'],
-                'user_id' => $request['user_id'],
+                'date' => $request['date'],
                 'product_id' => $id
+            ]);
+            DB::table('exchanges')->insert([
+                'user_id'=> $request['user_id'],
+                'type_exchange_id' => $request['type_exchange_id'],
+                'exchange_state_id' => 2,
+                'input_id' => $input_id,
             ]);
             return redirect()->route('users.index');
             
@@ -72,25 +79,39 @@ class ProductController extends Controller
                 $product['image'] = $request->file('image')->store('uploads','public');
             }
             $id = DB::table('products')->insertGetId($product);
-            DB::table('exchangues')
-            ->insert([
+            $input_id = DB::table('inputs')
+            ->insertGetId([
                 'quantity' => $request['stocks'],
-                'type_exchangue_id' => $request['type_exchangue_id'],
-                'user_id' => $request['user_id'],
+                'date' => $request['date'],
                 'product_id' => $id
             ]);
-                $products = Product::where('user_id','!=',$request['user_id'])->with('category','state')->get();
-                return view('product.exchange',['products'=>$products,'user'=>$request['user_id']]);
+            $exchange_id = DB::table('exchanges')->insertGetId([
+                'user_id'=> $request['user_id'],
+                'type_exchange_id' => $request['type_exchange_id'],
+                'exchange_state_id' => 1,
+                'input_id' => $input_id,
+            ]);
+            $products = Product::where('user_id','!=',$request['user_id'])->with('category','state')->get();
+            return view('product.exchange',['products'=>$products,'user'=>$request['user_id'],'exchange_id'=>$exchange_id]);
             }
     }
 
-    public function exchange($id)
+    public function exchange(Request $request,$id)
     {
+
         $product = Product::findOrfail($id);
         if($product->stocks > 0)
         {
-            $stocks = $product->stoks - 1;
+            $stocks = $product->stocks - $request['quantity'];
+
             Product::where('id','=',$id)->update(['stocks'=> $stocks]);
+            $output_id = DB::table('outputs')
+            ->insertGetId([
+                'quantity' => $request['quantity'],
+                'date' => date('Y-m-d'),
+                'product_id' => $id
+            ]);
+            Exchange::where('id','=',$request['exchange_id'])->update(['output_id'=> $output_id,'exchange_state_id'=>2]);
             return redirect()->route('users.index');
         }
     }
@@ -106,7 +127,41 @@ class ProductController extends Controller
         //return $products;
         return view('product.list', ['products'=>$products]);
     }
+    public static function validation($id)
+    {
+        return $id;
+        $user_id = auth()->user()->id;
+        $exchanges = Exchange::where('user_id','=',$user_id)->get();
+        foreach ($exchanges as $exchange) {
+            if ($exchange->type_exchange_id == 2 && $exchange->output_id == NULL) {
+                $product = Product::findOrfail($id);
+                if($product->stocks > 0)
+                {
+                    $stocks = $product->stocks - 1;
+        
+                    Product::where('id','=',$id)->update(['stocks'=> $stocks]);
+                    $output_id = DB::table('outputs')
+                    ->insertGetId([
+                        'quantity' => 1,
+                        'date' => date('Y-m-d'),
+                        'product_id' => $id
+                    ]);
+                    
+                    Exchange::where('id','=',$exchange->id)->update(['output_id'=> $output_id,'exchange_state_id'=>2]);
+                    return redirect()->route('users.index');
+                }
+            }
+            else {
+                $user_id = auth()->user()->id;
+                $categories = Category::all();
+                $states = State::all();
+                $type_Exchanges = Type_exchange::all();
 
+                return view('product.create',['product' => new Product(),'user_id'=>$user_id,'categories'=>$categories,'states'=>$states,'type_Exchanges'=>$type_Exchanges]);
+            }
+        }
+        //return view('product.list', ['products'=>$products]);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -131,15 +186,19 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //return $id;
-        $dataProduct = $request->except(['_token','_method']);
+        $dataProduct = $request->except(['_token','_method','image']);
+        $imagen = request()->get('image');
+        
+        if ($request->hasfile('image')) {
 
-        if ($request->hasfile('photo')) {
             $product = Product::findOrfail($id);
-            Storage::delete(['public/'. $product->image]);
+            Storage::delete(['public/'. $product->image]);            
             $dataProduct['image'] = $request->file('image')->store('uploads','public');
+            return $dataProduct['image'];
+            Product::where('id','=',$id)->update(['image'=>$dataProduct['image']]);
         }
         Product::where('id','=',$id)->update($dataProduct);
-        $product = Product::findOrfail($id);
+        
         //return redirect()->route('empleado.index',$empleado);
         return redirect()->route('users.index');
     }
@@ -153,5 +212,11 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function pdfProducts()
+    {
+        $products = Product::paginate()->with('category','state')->get();;
+        return view('products.pdfProducts',compact('products'));
+
     }
 }

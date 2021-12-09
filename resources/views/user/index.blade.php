@@ -7,7 +7,7 @@
     <!----------- menu principal --------- -->
     <nav id="menu" class="navbar navbar-expand-lg fixed-top bg-pink">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ route('users.index')}}">
                 <img src="img/bigblanco.png" alt="" height="80px" width="160px">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -156,13 +156,16 @@
     <section class="portafolio">
         <div class="contenedor">
             <div class="galeria-port">
+            
+                @foreach ($products as $product)
+                
                 <div class="imagen-port">
-                    <img src="img/cicla.jpg" alt="">
-                    <div class="hover-galeria" data-toggle="modal" data-target=".cicla-modal-lg">
-
-                        <p class="parrafodeimg">Bicicleta</p>
+                    
+                    <img src="{{ asset('storage'.'/'.$product->image)}}" alt="">
+                    <div class="hover-galeria" data-toggle="modal" data-target=".{{ $product->name }}">
+                        <p class="parrafodeimg">{{ $product->name }}</p>
                     </div>
-                    <div class="modal fade cicla-modal-lg" tabindex="-1" role="dialog"
+                    <div class="modal fade {{ $product->name }}" tabindex="-1" role="dialog"
                         aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-header">
@@ -174,31 +177,20 @@
                             </div>
                             <div class="modal-content">
                                 <div class="row" style="padding: 7%;">
-                                    <div class="col-md-6"><img style="margin-top: 40px;" src="./imagenes/cicla.jpg"
+                                    <div class="col-md-6"><img style="margin-top: 40px;" src="{{ asset('storage'.'/'.$product->image)}}"
                                             alt=""></div>
                                     <div class="col-md-6 ml-auto">
-                                        <h3>Bicicleta </h3>
+                                        <h3>{{ $product->name }} </h3>
                                         <div data-spy="scroll" data-target="#list-example" data-offset="0"
                                             class="scrollspy-example">
-                                            <p><b>El marco</b>El marco de las bicicletas todoterreno es más grande y
-                                                ancho que el de una convencional.
-                                                <b>Ruedas</b>Son tres las ruedas, por tamaño, la de la bicicleta de
-                                                montaña. Las de 26 pulgadas son las convencionales, las elegidas
-                                                cuando
-                                                apenas se comienza a rodar; son para usar con moderación.
-
-                                            </p>
+                                            <p>{{ $product->description }}</p>
                                         </div>
-                                        <button type="submit" class="btn colorBoton mt-3">Intercambiar</button>
-                                        <button type="button" class="btn colorBoton " data-container="body"
-                                            data-toggle="popover" data-placement="bottom"
-                                            data-content="Aun no has iniciado sesion!>">
-                                            Intercambiar
-                                        </button>
-
-
+                                        <a class="btn colorBoton mt-3" href="{{ route('products.create') }}" style="color: #ffffff;" >
+                                            Intercambiar </a>
+                                        {{-- <a class="btn btn-warning" href="{{  App\Http\Controllers\ProductController::validation($product->id); }}" type="submit" class="btn colorBoton mt-3">Intercambiar</a> --}}
+                                        
                                     </div>
-                                    <a href="./inicioSesion/inicioSesion.html">inicia sesion Aquí</a>
+                                    
                                 </div>
 
                             </div>
@@ -209,134 +201,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-                <div class="imagen-port">
-                    <img src="img/patines.jpg" alt="">
-                    <div class="hover-galeria" data-toggle="modal" data-target=".patines-modal-lg">
-                        <p class="parrafodeimg">Patines</p>
-                        <div class="modal fade patines-modal-lg" tabindex="-1" role="dialog"
-                            aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" style="color: #ffffff; text-align: center;">Realiza tu
-                                        intercambio </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label=>
-                                        <span aria-hidden="true" style="color: #ffffff;">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-content">
-                                    <div class="row" style="padding: 7%;">
-                                        <div class="col-md-6"><img style="margin-top: 40px;"
-                                                src="./imagenes/patines.jpg" alt=""></div>
-                                        <div class="col-md-6 ml-auto">
-                                            <h3>Patines</h3>
-                                            <div data-spy="scroll" data-target="#list-example" data-offset="0"
-                                                class="scrollspy-example">
-                                                <p><b>El marco</b>El marco de las bicicletas todoterreno es más
-                                                    grande y
-                                                    ancho que el de una convencional.
-                                                    <b>Ruedas</b>Son tres las ruedas, por tamaño, la de la bicicleta
-                                                    de
-                                                    montaña. Las de 26 pulgadas son las convencionales, las elegidas
-                                                    cuando
-                                                    apenas se comienza a rodar; son para usar con moderación.
-
-                                                </p>
-                                            </div>
-                                            <button type="submit" class="btn colorBoton mt-3">Intercambiar</button>
-                                            <button type="button" class="btn colorBoton " data-container="body"
-                                                data-toggle="popover" data-placement="bottom"
-                                                data-content="Aun no has iniciado sesion!>">
-                                                Intercambiar
-                                            </button>
-
-                                        </div>
-                                        <a href="#">inicia sesion Aquí</a>
-                                    </div>
-
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"> Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                
-                <div class="imagen-port">
-                    <img src="img/mac.jpg" alt="">
-                    <div class="hover-galeria">
-                        <p>Computadora Mac</p>
-                    </div>
-                </div>
-
-                <div class="imagen-port">
-                    <img src="img/escritorio.jpg" alt="">
-                    <div class="hover-galeria">
-                        <p>Escritorio computador</p>
-                    </div>
-                </div>
-
-                <div class="imagen-port">
-                    <img src="img/equipo.jpg" alt="">
-                    <div class="hover-galeria">
-                        <p>Equipo de sonido</p>
-                    </div>
-                </div>
-
-                <div class="imagen-port">
-                    <img src="img/perrohouse.jpg" alt="">
-                    <div class="hover-galeria">
-                        <p>Casa para mascota</p>
-                    </div>
-                </div>
-
-                <div class="imagen-port">
-                    <img src="img/puerta.jpg" alt="">
-                    <div class="hover-galeria">
-                        <p>Puerta de madera</p>
-                    </div>
-                </div>
-
-                <div class="imagen-port">
-                    <img src="img/cajon.jpg" alt="">
-                    <div class="hover-galeria">
-                        <p>Closet</p>
-                    </div>
-                </div>
-
-                <div class="imagen-port">
-                    <img src="img/pantalla windos.jpg" alt="">
-                    <div class="hover-galeria">
-                        <p>Pantalla LG</p>
-                    </div>
-                </div>
-
-                <div class="imagen-port">
-                    <img src="img/mueble.jpg" alt="">
-                    <div class="hover-galeria">
-                        <p>Sofa</p>
-                    </div>
-                </div>
-
-                <div class="imagen-port">
-                    <img src="../img/tablero.png" alt="">
-                    <div class="hover-galeria">
-                        <p>Tablero</p>
-                    </div>
-                </div>
-
-                <div class="imagen-port">
-                    <img src="img/Classical_Guitar_two_views.jpg" alt="">
-                    <div class="hover-galeria">
-                        <p>Guitarra</p>
-                    </div>
-                </div>
+                        
+                </div>                
+                @endforeach
             </div>
         </div>
     </section>
@@ -344,16 +211,7 @@
 
 <!-- Redes Sociales de la Fundacion -->
 
-<div class="container">
 
-    <article class="cuadrofundacion">
-            <p class="fundacion">Si desea donar su grano de arena a la Fundación aqui tiene sus Redes Sociales</p>
-            <a class="iconos" href="https://www.facebook.com/fundacionbellaflor"><i class="fab fa-facebook"></i></a>
-            <a class="iconos" href="https://twitter.com/bellaflortw"><i class="fab fa-twitter"></i></a>
-            <a class="iconos" href="https://www.instagram.com/fundacion_bella_flor/"><i class="fab fa-instagram"></i></a>
-    </article>
-    <br><br>
-</div>
 
 <!-------------- footer------------ -->
 

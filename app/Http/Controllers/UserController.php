@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,8 +19,26 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
-        return view('user.index',compact('user'));
+        $id = auth()->user()->id;
+        $user= User::where('id','=',$id)->first();
+        $products = Product::paginate(5);
+        $roles = $user->roles;
+        
+        foreach ($roles as $rol) {
+            
+            if ($rol->pivot['role_id'] == 1){
+                
+                $users = User::where('id','!=',$id)->get();
+                $admins = User::where('id','=',$id)->get();
+                return view('admin.index', compact('users','admins','products'));
+
+            }            
+            else {
+                return view('user.index',compact('user','products'));                
+            }
+        }
+        return view('user.index',compact('user','products'));                
+        
     }
 
     /**
@@ -99,5 +120,21 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function pdfUsers()
+    {
+        
+        $today = Carbon::now()->format('d/m/Y');
+        
+        $id = auth()->user()->id;        
+        $users = User::where('id','!=',$id)->get();
+        //$pdf = PDF::loadView('admin.pdfUsers', ['users' => $users])->setOptions(['defaultFont' => 'sans-serif']);
+
+        $pdf = PDF::loadView('admin.pdfUsers',compact('users'));        
+        //return $pdf->download($today.'_Reporte_Usuarios'.'.pdf');
+        return $pdf->stream($today.'_Reporte_Usuarios'.'.pdf');
+        
+        
+        return view('admin.pdfUsers',compact('users'));
     }
 }

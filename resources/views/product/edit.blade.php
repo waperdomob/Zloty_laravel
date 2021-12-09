@@ -73,9 +73,9 @@
                         <br>
                         <br>   
                         <div class="form-group">
-                            <label for="photo" style="color: white;" >Imagen</label>
+                            <label for="image" style="color: white;" >Imagen</label>
                               
-                            <input type="file" class="form-control" name="image" id="photo" value=""><br>
+                            <input type="file" class="form-control" name="image" id="image" value=""><br>
                         </div> <br>
                         <br> 
                         <div class="col-sm">
