@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypeExchanguesTable extends Migration
+class Outputs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateTypeExchanguesTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_exchanges', function (Blueprint $table) {
+        Schema::create('outputs', function (Blueprint $table) {
             $table->id();
-<<<<<<< HEAD
-            $table->string('type_exchanges');
-=======
-            $table->string('type_exchange');
->>>>>>> 41f23af29e8f793018d0a766065de5076b32313f
+            $table->date('date');
+            $table->integer('quantity');
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->unsignedBigInteger('product_id');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateTypeExchanguesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_exchanges');
+        Schema::dropIfExists('outputs');
     }
 }

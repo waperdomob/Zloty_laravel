@@ -7,7 +7,7 @@
     <!----------- menu principal --------- -->
     <nav id="menu" class="navbar navbar-expand-lg fixed-top bg-pink">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ route('users.index')}}">
                 <img src="img/bigblanco.png" alt="" height="80px" width="160px">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -86,7 +86,7 @@
 
     <<div class="contenedorletras">
         <h1>Con Zloty intercambia o dona Productos de manera Rapida</h1>
-        <h6>Puedes clasificar tus productos para una mayor busqueda a lo que tu necesites.</h6>
+        <h6>Puedes clasificar tus  HOLA HOLA HOLA para una mayor busqueda a lo que tu necesites.</h6>
        
     </div>
 
@@ -185,8 +185,9 @@
                                             class="scrollspy-example">
                                             <p>{{ $product->description }}</p>
                                         </div>
-                                       
-                                        <a class="btn btn-warning" href="{{  App\Http\Controllers\ProductController::validation($product->id); }}" type="submit" class="btn colorBoton mt-3">Intercambiar</a>
+                                        <a class="btn colorBoton mt-3" href="{{ route('products.create') }}" style="color: #ffffff;" >
+                                            Intercambiar </a>
+                                        {{-- <a class="btn btn-warning" href="{{  App\Http\Controllers\ProductController::validation($product->id); }}" type="submit" class="btn colorBoton mt-3">Intercambiar</a> --}}
                                         
                                     </div>
                                     
@@ -210,16 +211,7 @@
 
 <!-- Redes Sociales de la Fundacion -->
 
-<div class="container">
 
-    <article class="cuadrofundacion">
-            <p class="fundacion">Si desea donar su grano de arena a la Fundación aqui tiene sus Redes Sociales</p>
-            <a class="iconos" href="https://www.facebook.com/fundacionbellaflor"><i class="fab fa-facebook"></i></a>
-            <a class="iconos" href="https://twitter.com/bellaflortw"><i class="fab fa-twitter"></i></a>
-            <a class="iconos" href="https://www.instagram.com/fundacion_bella_flor/"><i class="fab fa-instagram"></i></a>
-    </article>
-    <br><br>
-</div>
 
 <!-------------- footer------------ -->
 

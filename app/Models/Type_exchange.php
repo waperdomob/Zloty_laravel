@@ -9,6 +9,7 @@ class Type_exchange extends Model
 {
     use HasFactory;
     
+<<<<<<< HEAD
     protected $fillable = [
         'id',
         'type_exchanges',
@@ -17,5 +18,10 @@ class Type_exchange extends Model
     public function exchanges()
     {
        return $this->hasMany(Exchangue::class);
+=======
+    public function exchanges()
+     {
+        return $this->hasMany(Exchangue::class);
+>>>>>>> 41f23af29e8f793018d0a766065de5076b32313f
     }
 }

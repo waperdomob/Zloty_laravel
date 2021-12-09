@@ -48,7 +48,7 @@
         <th width="136" scope="col" >MODIFICAR</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody >
         @foreach ($products as $product) 
             <tr>
                 <td>{{$product->id}}</td>       
