@@ -1,3 +1,13 @@
+    <div class="container">
+
+        <article class="cuadrofundacion">
+                <p class="fundacion">Si desea donar su grano de arena a la Fundación aqui tiene sus Redes Sociales</p>
+                <a class="iconos" href="https://www.facebook.com/fundacionbellaflor"><i class="fab fa-facebook"></i></a>
+                <a class="iconos" href="https://twitter.com/bellaflortw"><i class="fab fa-twitter"></i></a>
+                <a class="iconos" href="https://www.instagram.com/fundacion_bella_flor/"><i class="fab fa-instagram"></i></a>
+        </article>
+        <br><br>
+    </div>
 
       <!-------------- footer------------ -->
     <div>

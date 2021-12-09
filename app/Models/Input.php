@@ -12,4 +12,9 @@ class Input extends Model
      {
         return $this->hasOne(Exchange::class,'input_id');
     }
+    public function product()
+     {
+        return $this->belongsTo(Product::class,'product_id');
+    }
+
 }

@@ -13,4 +13,8 @@ class Output extends Model
      {
         return $this->hasOne(Exchange::class,'output_id');
     }
+    public function product()
+     {
+        return $this->belongsTo(Product::class,'product_id');
+    }
 }

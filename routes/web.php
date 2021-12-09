@@ -20,13 +20,19 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
+    
     return view('user.index');
 })->name('home');
 
-Route::resource('users', UserController::class)->names('users');
-Route::put('/products/{id}',[ProductController::class])->name('products.exchange');
+    Route::get('users/pdfUsers',[UserController::class, 'pdfUsers'] )->name('users.pdf');
+    Route::get('users/pdfProducts',[ProductController::class, 'pdfProducts'] )->name('products.pdf');
+
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
+    Route::resource('users', UserController::class)->names('users');
+    
+    
     Route::resource('products', ProductController::class)->names('products');
     Route::put('/products/{id}',[ProductController::class, 'exchange'])->name('products.exchange');
 

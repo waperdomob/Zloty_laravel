@@ -213,4 +213,10 @@ class ProductController extends Controller
     {
         //
     }
+    public function pdfProducts()
+    {
+        $products = Product::paginate()->with('category','state')->get();;
+        return view('products.pdfProducts',compact('products'));
+
+    }
 }
