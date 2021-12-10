@@ -32,10 +32,9 @@
             </div>
 
             <div class="nav-links">
-                <a href="Cprincipaladmin.php" class="link">Usuarios</a>
-                <a href="Cdonacionesadmin.php" class="link">Donaciones</a>
-                <a href="Cintercambiosadmin.php" class="link">Intercambios</a>
-                <a href="Cestadisticasadmin.php" class="link">Estadisticas</a>
+                <a href="{{ route('users.index') }}" class="link">Usuarios</a>
+                <a href="{{ route('products.list',$id=1) }}" class="link">Donaciones</a>
+                <a href="{{ route('products.list',$id=2) }}" class="link">Intercambios</a>
             </div>
         </nav>
 

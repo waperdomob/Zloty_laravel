@@ -131,8 +131,8 @@ class UserController extends Controller
         //$pdf = PDF::loadView('admin.pdfUsers', ['users' => $users])->setOptions(['defaultFont' => 'sans-serif']);
 
         $pdf = PDF::loadView('admin.pdfUsers',compact('users'));        
-        //return $pdf->download($today.'_Reporte_Usuarios'.'.pdf');
-        return $pdf->stream($today.'_Reporte_Usuarios'.'.pdf');
+        return $pdf->download($today.'_Reporte_Usuarios'.'.pdf');
+        //return $pdf->stream($today.'_Reporte_Usuarios'.'.pdf');
         
         
         return view('admin.pdfUsers',compact('users'));

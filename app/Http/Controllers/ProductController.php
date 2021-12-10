@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Exchange;
+use App\Models\Input;
+use App\Models\Output;
 use App\Models\Product;
 use App\Models\State;
 use App\Models\Type_exchange;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+
+use function PHPSTORM_META\type;
 
 class ProductController extends Controller
 {
@@ -24,7 +30,23 @@ class ProductController extends Controller
         $products = Product::where('user_id','=',$user->id)->get();
         return view('product.list',compact('user'));
     }
-
+    public function list($id)
+    {
+        if ($id == 1) {
+        
+        $user = auth()->user();
+        $products = Product::paginate();
+        $exchanges = Exchange::all();
+        $inputs = Input::all();
+        $outputs = Output::all();
+        return view('admin.listProducts',compact('products','exchanges'));
+        }
+        else{
+        $user = auth()->user();
+        $products = Product::paginate();
+        return view('admin.listProducts',compact('products'));
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -214,8 +236,12 @@ class ProductController extends Controller
     }
     public function pdfProducts()
     {
-        $products = Product::paginate()->with('category','state')->get();;
-        return view('products.pdfProducts',compact('products'));
+        $today = Carbon::now()->format('d/m/Y');
+        $products = Product::with('category','state')->get();
+        
+        $pdf = PDF::loadView('admin.pdfProducts',compact('products'));        
+        return $pdf->download($today.'_Reporte_Productos'.'.pdf');
+        //return view('admin.pdfProducts',compact('products'));
 
     }
 }

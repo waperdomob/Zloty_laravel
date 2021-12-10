@@ -31,8 +31,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('users', UserController::class)->names('users');
-    
-    
+    Route::get('products/list/{id}',[ProductController::class, 'list'])->name('products.list'); 
     Route::resource('products', ProductController::class)->names('products');
     Route::put('/products/{id}',[ProductController::class, 'exchange'])->name('products.exchange');
     /* Route::get('users/{id}', [ProductController::class, 'validation'])->name('products.validation'); */

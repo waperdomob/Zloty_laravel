@@ -30,7 +30,14 @@ class Product extends Model
      {
         return $this->belongsTo(State::class,'state_id');
     }
-    
+    public function inputs()
+     {
+        return $this->hasMany(Input::class,'product_id');
+    }
+    public function outputs()
+     {
+        return $this->hasMany(Output::class.'product_id');
+    }
     
 
 }

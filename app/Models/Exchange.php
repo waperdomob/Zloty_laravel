@@ -24,11 +24,11 @@ class Exchange extends Model
     }
     public function input()
      {
-        return $this->hasOne(Input::class,'input_id');
+        return $this->hasOne(Input::class);
     }
     public function output()
      {
-        return $this->hasOne(Output::class,'input_id');
+        return $this->hasOne(Output::class);
     }
     public function typeExchange()
      {

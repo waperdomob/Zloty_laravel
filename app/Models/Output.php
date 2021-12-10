@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Output extends Model
 {
     use HasFactory;
-
+    protected $fillable = [                
+        'date',
+        'quantity',
+        'product_id',
+    ];
     public function exchange()
      {
-        return $this->hasOne(Exchange::class,'output_id');
+        return $this->belongsTo(Exchange::class,'output_id');
     }
     public function product()
      {

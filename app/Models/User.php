@@ -64,10 +64,10 @@ class User extends Authenticatable
     ];
     public function products()
      {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class,'user_id');
     }
     public function exchanges()
      {
-        return $this->hasMany(Exchangue::class);
+        return $this->hasMany(Exchangue::class,'user_id');
     }
 }

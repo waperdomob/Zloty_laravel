@@ -14,16 +14,12 @@
     <title>GUIAPDF</title>
 </head>
 <body>
-    
-
-<nav id="menu" class="navbar navbar-expand-lg bg-pink">
-    <div class="container">
-        <p class="navbar-brand" >
-            <img src="{{ public_path('/img/bigblanco.png')}}" alt="" height="120px" width="160px">
-        </p>        
-    </div>
-</nav>
- <br>
+  <br>
+  <div class="container">
+    <a>
+        <img src="{{ public_path('/img/bigblanco.png')}}" alt="" height="100px" width="180px">
+    </a>        
+</div>
     <center><h1 style =" color: orange; ">Reporte de USUARIOS</h1></center><br><br>    
 
     <div class="contenedor-3">
@@ -58,13 +54,15 @@
     
     <footer class="content-footer">
 
-        <a href="https://www.facebook.com/fundacionbellaflor">
-            <img src="{{ public_path('img/logoBellaFlor.png')}}" alt="" width="190px" height="100px">
-        </a>
+       <div>
+            <a href="https://www.facebook.com/fundacionbellaflor">
+                <img src="{{ public_path('img/logoBellaFlor.png')}}" alt="" width="190px" height="100px">
+            </a>
+       </div>
         <div>
-            <h2 class="titulo-final">&copy; Fundación Bella Flor | Grup-Zloty</h2>
+            <h2 class="titulo-final">&copy; Fundación Bella Flor | Grupo-Zloty</h2>
             <div class="diseñotime">
-                <script src="{{ asset('js/time.js') }}"></script>
+                <script src="{{ public_path('js/time.js') }}"></script>
             </div>
         </div>
         <img src="{{ public_path('img/bigblanco.png')}}" alt="" width="180px" height="100px">
