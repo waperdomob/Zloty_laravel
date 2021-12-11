@@ -32,11 +32,11 @@ class Product extends Model
     }
     public function inputs()
      {
-        return $this->hasMany(Input::class,'product_id');
+        return $this->hasMany(Input::class);
     }
     public function outputs()
      {
-        return $this->hasMany(Output::class.'product_id');
+        return $this->hasMany(Output::class);
     }
     
 

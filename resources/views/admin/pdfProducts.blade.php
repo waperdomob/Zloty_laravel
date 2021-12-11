@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +21,11 @@
         <img src="{{ public_path('/img/bigblanco.png')}}" alt="" height="100px" width="180px">
     </a>        
 </div>
-    <center><h1 style =" color: orange; ">Reporte de PRODUCTOS</h1></center><br><br>    
+    <center><h1 style =" color: orange; ">REPORTE DE PRODUCTOS</h1></center><br><br>    
+    <center>
+        <h3 style =" color: orange; ">Productos que entran</h3><br>
 
+    </center>
     <div class="contenedor-3">
         <table class="table table-borderless" style =" color: rgb(0, 0, 0); ">
             <thead class="thead-dark">
@@ -37,7 +41,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($products as $product)
+                @foreach ($inputs as $product)
                 <tr>                
                         <td>{{ $product->id }}</td>                
                         <td>{{ $product->name }}</td>                
@@ -53,11 +57,49 @@
             
         </table>
     </div>
-    <footer class="content-footer">
+    @if (isset($outputs))
+    <center>
+        <h3 style =" color: orange; ">Productos que salen</h3><br>
 
+    </center>
+        <div class="contenedor-3">
+        <table class="table table-borderless" style =" color: rgb(0, 0, 0); ">
+            <thead class="thead-dark">
+            <tr>
+                
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th class="text-center">Stocks</th>
+                <th class="text-center">Categoria</th>
+                <th class="text-center">Estado</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($outputs as $product)
+                <tr>                
+                        <td>{{ $product->id }}</td>                
+                        <td>{{ $product->name }}</td>                
+                        <td>{{ $product->description }}</td>
+                        <td class="text-center">{{$product->stocks}}</td>
+                        <td class="text-center">{{$product->category['category']}}</td>
+                        <td class="text-center">{{$product->state['states']}}</td>
+
+                </tr>
+                
+                @endforeach
+            </tbody>
+            
+        </table>
+    </div>
+    
+    @endif
+    <br><br><br>
+    <footer class="content-footer">       
         <div>
              <a href="https://www.facebook.com/fundacionbellaflor">
-                 <img src="{{ public_path('img/logoBellaFlor.png')}}" alt="" width="190px" height="100px">
+                 <img src="{{ public_path('img/logoBellaFlor.png')}}" alt="" width="180px" height="100px">
              </a>
         </div>
          <div>
@@ -66,7 +108,9 @@
                  <script src="{{ public_path('js/time.js') }}"></script>
              </div>
          </div>
-         <img src="{{ public_path('img/bigblanco.png')}}" alt="" width="180px" height="100px">
+         <div>
+            {{-- <img src="{{ public_path('img/bigblanco.png')}}" alt="" width="180px" height="100px"> --}}
+         </div>
      </footer>
  
      <!---- js de iconos---------------- -->
@@ -86,3 +130,4 @@
          })
      </script>
  </body>
+

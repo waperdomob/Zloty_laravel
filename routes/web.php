@@ -25,7 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
 })->name('home');
 
     Route::get('users/pdfUsers',[UserController::class, 'pdfUsers'] )->name('users.pdf');
-    Route::get('users/pdfProducts',[ProductController::class, 'pdfProducts'] )->name('products.pdf');
+    Route::get('users/pdfProducts/{id}',[ProductController::class, 'pdfProducts'] )->name('products.pdf');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {

@@ -63,10 +63,10 @@
               <div class="modal-footer">
                   <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                      <button type="button" class="btn btn-primary">Guardar </button> -->
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><span
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal"><span
                           class="glyphicon glyphicon-remove"></span> Cancel</button>
-                  <button type="submit" name="editar" id="colornav" class="btn"><span
-                          class="glyphicon glyphicon-check"></span> Actualizar Ahora</a>
+                  <button type="submit" id="colornav" class="btn"><span
+                          class="glyphicon glyphicon-check"></span> Actualizar Ahora</button>
               </div>
               
           </form>
@@ -79,21 +79,26 @@
 <div class="modal fade" id="delete_{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content bg-dark">
-      <div class="modal-header">
-      
+      <div class="modal-header">      
           <center>
               <h4 class="modal-title titulos" id="myModalLabel">BORRAR USUARIO</h4>
           </center>
           <button type="button" class="btn-close" id="colornav" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+    <div class="modal-body">
+        <form action="{{ route('users.destroy',$user->id) }}" method="post"    class="d-inline">
+            @csrf @method('DELETE')
           <p class="text-center tables2">¿Esta seguro de Borrar el registro?</p>
           <h2 class="text-center tables2">{{ $user->name }}</h2>
-      </div>
-      <div class="modal-footer">
-         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <a href="{{route('users.destroy',$user->id)}}" class="btn" id="colornav"><span class="glyphicon glyphicon-trash"></span> Si</a>
-      </div>
+        
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                
+                <button  type="submit" class="btn" id="colornav"><span class="glyphicon glyphicon-trash"></span> Si</button>
+                
+            </div>
+        </form>
+    </div>
   </div>
 </div>
 </div>

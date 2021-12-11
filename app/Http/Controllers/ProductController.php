@@ -30,21 +30,32 @@ class ProductController extends Controller
         $products = Product::where('user_id','=',$user->id)->get();
         return view('product.list',compact('user'));
     }
+    
     public function list($id)
     {
+        $categories = Category::all();
+        $states = State::all();
         if ($id == 1) {
-        
-        $user = auth()->user();
-        $products = Product::paginate();
-        $exchanges = Exchange::all();
-        $inputs = Input::all();
-        $outputs = Output::all();
-        return view('admin.listProducts',compact('products','exchanges'));
+            
+            $inputs = Product::with('category','state')
+            ->join('inputs', 'inputs.product_id', '=', 'products.id')
+            ->join('exchanges', 'exchanges.input_id', '=', 'inputs.id')->where('exchanges.type_exchange_id',$id)
+            ->select('products.*')
+            ->get();
+            return view('admin.listProducts',['inputs'=>$inputs,'categories'=>$categories,'states'=>$states]);
         }
         else{
-        $user = auth()->user();
-        $products = Product::paginate();
-        return view('admin.listProducts',compact('products'));
+            $inputs = Product::with('category','state')
+            ->join('inputs', 'inputs.product_id', '=', 'products.id')
+            ->join('exchanges', 'exchanges.input_id', '=', 'inputs.id')->where('exchanges.type_exchange_id',2)
+            ->select('products.*')
+            ->get();
+            $outputs = Product::with('category','state')
+            ->join('outputs', 'outputs.product_id', '=', 'products.id')
+            ->join('exchanges', 'exchanges.output_id', '=', 'outputs.id')->where('exchanges.type_exchange_id',2)
+            ->select('products.*')
+            ->get();
+            return view('admin.listProducts',compact('inputs','outputs','categories','states'));
         }
     }
     /**
@@ -151,7 +162,7 @@ class ProductController extends Controller
     }
     public static function validation($id)
     {
-        return $id;
+        
         $user_id = auth()->user()->id;
         $exchanges = Exchange::where('user_id','=',$user_id)->get();
         foreach ($exchanges as $exchange) {
@@ -234,13 +245,35 @@ class ProductController extends Controller
     {
         //
     }
-    public function pdfProducts()
+    public function pdfProducts($id)
     {
-        $today = Carbon::now()->format('d/m/Y');
-        $products = Product::with('category','state')->get();
         
-        $pdf = PDF::loadView('admin.pdfProducts',compact('products'));        
-        return $pdf->download($today.'_Reporte_Productos'.'.pdf');
+        $today = Carbon::now()->format('d/m/Y');
+        if ($id == 1) {
+        
+            $inputs = Product::with('category','state')
+            ->join('inputs', 'inputs.product_id', '=', 'products.id')
+            ->join('exchanges', 'exchanges.input_id', '=', 'inputs.id')->where('exchanges.type_exchange_id',$id)
+            ->select('products.*')
+            ->get();
+            $pdf = PDF::loadView('admin.pdfProducts',compact('inputs'));        
+            return $pdf->download($today.'_Reporte_Productos'.'.pdf');
+        }
+        else{
+            $inputs = Product::with('category','state')
+            ->join('inputs', 'inputs.product_id', '=', 'products.id')
+            ->join('exchanges', 'exchanges.input_id', '=', 'inputs.id')->where('exchanges.type_exchange_id',2)
+            ->select('products.*')
+            ->get();
+            $outputs = Product::with('category','state')
+            ->join('outputs', 'outputs.product_id', '=', 'products.id')
+            ->join('exchanges', 'exchanges.output_id', '=', 'outputs.id')->where('exchanges.type_exchange_id',2)
+            ->select('products.*')
+            ->get();
+            $pdf = PDF::loadView('admin.pdfProducts',compact('inputs','outputs'));        
+            return $pdf->download($today.'_Reporte_Productos'.'.pdf');
+        }
+        
         //return view('admin.pdfProducts',compact('products'));
 
     }

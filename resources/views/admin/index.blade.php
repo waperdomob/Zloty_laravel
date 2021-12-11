@@ -94,8 +94,12 @@
                     <td class="tables2">{{ $user->city }}</td>
                     
                     <td>
-                        <a href="#editarUsuario{{$user->id}}"   data-bs-toggle="modal" id="colorbuttom" class="btn btn-primary"  ><span class="glyphicon glyphicon-edit"></span>Editar</a>
-                        <a href="#delete_{{$user->id}}"  data-bs-toggle="modal" id="colorbuttom" class="btn btn-primary" ><span class="glyphicon glyphicon-trash"></span>Borrar</a>
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarUsuario{{$user->id}}"  id="colorbuttom" class="btn btn-primary">Editar
+                        </button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#delete_{{$user->id}}"  id="colorbuttom" class="btn btn-primary">Eliminar
+                        </button>
+                    
                     </td>
                     @include('admin.modalAdminUser')
                 </tr>

@@ -86,7 +86,7 @@
 
     <<div class="contenedorletras">
         <h1>Con Zloty intercambia o dona Productos de manera Rapida</h1>
-        <h6>Puedes clasificar tus  HOLA HOLA HOLA para una mayor busqueda a lo que tu necesites.</h6>
+        <h6>Puedes clasificar tus productos para una mayor busqueda a lo que tu necesites.</h6>
        
     </div>
 

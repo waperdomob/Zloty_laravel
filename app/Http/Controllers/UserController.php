@@ -94,21 +94,43 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $userData = $request->except(['_token','_method','photo']);
+        $user_check = auth()->user();
+        $userData = $request->except(['_token','_method','photo','password']);
         $profile_photo_path = request()->get('photo');
+        $roles = $user_check->roles;
+        
+        foreach ($roles as $rol) {
+            
+            if ($rol->pivot['role_id'] == 1){
+                
+                if ($request['password']) {
+                    $password = bcrypt($request['password']);
+                    $userData['password']= $password;    
+                    User::where('id','=',$id)->update($userData);
+                    return redirect()->route('users.index');        
+                }
+                else
+                {
+                    User::where('id','=',$id)->update($userData);
+                    return redirect()->route('users.index');   
+                }
+            }
+        
+            else{
+                if ($request->hasfile('photo'))
+                {
+                    $user = User::findOrfail($id);
+                    Storage::delete(['public/'. $user->profile_photo_path]);
+                    $userData['profile_photo_path'] = $request->file('photo')->store('profiles_photos','public');
+                    User::where('id','=',$id)->update(['profile_photo_path'=>$userData['profile_photo_path']]);
+                }
+            
+                User::where('id','=',$id)->update($userData);
 
-        if ($request->hasfile('photo')) {
-            $user = User::findOrfail($id);
-            Storage::delete(['public/'. $user->profile_photo_path]);
-            $userData['profile_photo_path'] = $request->file('photo')->store('profiles_photos','public');
-            User::where('id','=',$id)->update(['profile_photo_path'=>$userData['profile_photo_path']]);
+                $user = User::findOrfail($id);
+                return redirect()->route('users.edit',compact('user')) ;
+            }
         }
-       
-        User::where('id','=',$id)->update($userData);
-
-        $user = User::findOrfail($id);
-        return redirect()->route('users.edit',compact('user')) ;
     }
 
     /**
@@ -118,12 +140,17 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    { 
+        $user = User::findOrfail($id);
+        if ($user->profile_photo_path)
+         {
+            Storage::delete(['public/'. $user->profile_photo_path]);            
+        }
+        User::destroy($id);
+        return redirect()->route('users.index') ;  
     }
     public function pdfUsers()
     {
-        
         $today = Carbon::now()->format('d/m/Y');
         
         $id = auth()->user()->id;        
