@@ -36,7 +36,7 @@
 
         <nav id="menu" class="navbar navbar-expand-lg fixed-top bg-pink">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{route('/')}}">
                     <img src="{{ asset('img/bigblanco.png') }}" alt="" height="80px" width="160px">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -51,7 +51,7 @@
                             <div class="i">
                                 <i class="fas fa-user-friends"></i>
                             </div>
-                            <a class="nav-link btn btn-link" href="#" style="color: #ffffff;">
+                            <a class="nav-link btn btn-link" href="{{route('knowUs')}}" style="color: #ffffff;">
                                 Conocenos</a>
                         </li>
                         <li class="nav-item">

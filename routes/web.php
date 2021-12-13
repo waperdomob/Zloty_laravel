@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('/');
+Route::get('/knowUs', function () {
+    return view('components.knowUs');
+})->name('knowUs');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
     
