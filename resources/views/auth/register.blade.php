@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn colorRegistro mt-3"><a
-                                    href="iniciar-sesion.php"
+                                    href="{{ route('login') }}"
                                     style="text-decoration: none; color:white">
                                     inicia Sesion</a>
                             </button>
