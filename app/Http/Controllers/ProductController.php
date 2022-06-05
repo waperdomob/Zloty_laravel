@@ -131,22 +131,27 @@ class ProductController extends Controller
 
     public function exchange(Request $request,$id)
     {
-
+ 
         $product = Product::findOrfail($id);
+        $cantidad = $request['quantity'];
         if($product->stocks > 0)
         {
-            $stocks = $product->stocks - $request['quantity'];
-
+            $stocks = $product->stocks - $cantidad;
+            print($stocks);
+            // DB::update('update products set stocks = [$stocks] where id = ?', [$id]);
             Product::where('id','=',$id)->update(['stocks'=> $stocks]);
             $output_id = DB::table('outputs')
             ->insertGetId([
-                'quantity' => $request['quantity'],
+                'quantity' => $cantidad,
                 'date' => date('Y-m-d'),
                 'product_id' => $id
             ]);
+            //DB::update('update exchanges set output_id = [$output_id] where id = ?', [$request['exchange_id']]);
             Exchange::where('id','=',$request['exchange_id'])->update(['output_id'=> $output_id,'exchange_state_id'=>2]);
-            return redirect()->route('users.index');
+
         }
+        return redirect()->route('users.index');
+
     }
     /**
      * Display the specified resource.
@@ -173,6 +178,7 @@ class ProductController extends Controller
                     $stocks = $product->stocks - 1;
         
                     Product::where('id','=',$id)->update(['stocks'=> $stocks]);
+                    
                     $output_id = DB::table('outputs')
                     ->insertGetId([
                         'quantity' => 1,
@@ -184,15 +190,13 @@ class ProductController extends Controller
                     return redirect()->route('users.index');
                 }
             }
-            else {
-                $user_id = auth()->user()->id;
-                $categories = Category::all();
-                $states = State::all();
-                $type_Exchanges = Type_exchange::all();
 
-                return view('product.create',['product' => new Product(),'user_id'=>$user_id,'categories'=>$categories,'states'=>$states,'type_Exchanges'=>$type_Exchanges]);
-            }
         }
+        $user_id = auth()->user()->id;
+        $categories = Category::all();
+        $states = State::all();
+        $type_Exchanges = Type_exchange::all();
+        return view('product.create',['product' => new Product(),'user_id'=>$user_id,'categories'=>$categories,'states'=>$states,'type_Exchanges'=>$type_Exchanges]);
         //return view('product.list', ['products'=>$products]);
     }
     /**

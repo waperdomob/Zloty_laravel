@@ -185,9 +185,12 @@
                                             class="scrollspy-example">
                                             <p>{{ $product->description }}</p>
                                         </div>
-                                        <a class="btn colorBoton mt-3" href="{{ route('products.create') }}" style="color: #ffffff;" >
-                                            Intercambiar </a>
-                                        {{-- <a class="btn btn-warning" href="{{  App\Http\Controllers\ProductController::validation($product->id); }}" type="submit" class="btn colorBoton mt-3">Intercambiar</a> --}}
+                                        <center><a class="btn btn-primary" href="{{ route('products.create') }}" style="color: #ffffff;" >
+                                            Intercambiar </a></center>
+                                        <br><br>
+                                        Si ya hiciste la primera parte del intercambio, selecciona tu producto a intercambiar
+                                        <br>
+                                        <center><a class="btn btn-warning" href="{{  route('products.validation',$product->id) }}" type="submit" class="btn colorBoton mt-3">Click Aquí!</a></center>
                                         
                                     </div>
                                     

@@ -52,7 +52,7 @@
                             <select name="category_id" class="form-control" placeholder="Categoria del Producto" method="post" required>
                                 <option value="">Categoria</option>
                                 @foreach ($categories as $id => $category)
-                                    <option value="{{$id}}"            
+                                    <option value="{{$category['id']}}"            
                                         @if ($id === $product->category_id) selected @endif>   
                                         {{$category['category']}}</option>
                                 @endforeach                                   
@@ -64,7 +64,7 @@
                             <select name="state_id" class="form-control" placeholder="Estado del Producto" method="post" required>
                                 <option value="">Estado</option>
                                 @foreach ($states as $id => $states)
-                                    <option value="{{$id}}"            
+                                    <option value="{{$states['id']}}"            
                                         @if ($id === $product->state_id) selected @endif>   
                                         {{$states['states']}}</option>
                                 @endforeach 

@@ -25,7 +25,7 @@
         <tbody>
             @foreach ($products as $product) 
                 <tr>
-                    <td>{{$product->name}}</td>
+                    <td>{{$product->id}}</td>
                     <td>{{$product->name}}</td>
                     <td>{{$product->description}}</td>
                     <td class="text-center">{{$product->stocks}}</td>
@@ -44,7 +44,7 @@
                             </div>
                             <div class="form-group">
                                 @if ( $exchange_id )
-                                    <input id="exchange_id" class="form-control" type="number" name="exchange_id"  value="{{ $exchange_id }}" hidden>
+                                    <input id="exchange_id" class="form-control" type="number" name="exchange_id"  value="{{ $exchange_id }}">
                                 @endif    
                             </div>
                             <input type="submit" value="Intercambiar" class="btn btn-warning">
