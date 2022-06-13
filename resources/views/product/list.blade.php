@@ -6,7 +6,7 @@
 <nav id="menu" class="navbar navbar-expand-lg bg-pink">
     <div class="container">
         <a class="navbar-brand" href="{{route('users.index')}}">
-            <img src="/img/bigblanco.png" alt="" height="80px" width="160px">
+            <img src="/img/header.png" alt=""  width="70%">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -31,7 +31,7 @@
  <br>
    
 <center>
-    <h1 style =" color: orange; ">LISTADO DE MIS PRODUCTOS</h1><br>
+    <h1 class="tituloList">LISTADO DE MIS PRODUCTOS</h1><br>
 <!-- <a href="Cnuevoproducto.php" style =" color: orange; ">NUEVO PRODUCTO</a> -->
 </center>
 <div class="contenedor-3">
@@ -60,15 +60,15 @@
                 <td>
                     <img src="{{ asset('storage'.'/'.$product->image)}}" class="card-img-top" alt="..."  height="120">
                 </td>
-                <td width="136" scope="col" ><a class="btn btn-warning text-center" id="colorbuttom" href="{{ route('products.edit',$product)}}">Modificar</a></td>
+                <td width="136" scope="col" ><a class="btn text-center" id="colorbuttom2" href="{{ route('products.edit',$product)}}">Modificar</a></td>
             </tr>
         @endforeach   
     </tbody>
 </table>
 </div>
     <center>      
-        <a href="{{ route('users.index')}}" id="colorbuttom" class="btn btn-warning ">FINALIZAR</a> 
+        <a href="{{ route('users.index')}}" id="colorbuttom" class="btn ">FINALIZAR</a> 
     </center>  
-
+<br>
     @include('layouts.plantilla.footer') 
 @endsection

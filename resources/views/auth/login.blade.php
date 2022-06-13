@@ -14,7 +14,7 @@
             <!-- parte del logo  -->
             <section>
                 <div>
-                    <img src="img/bigblanco.png" alt="" width="150px">
+                    <img src="img/logo.png" alt="" width="60%">
                 </div>
             </section>
 

@@ -16,7 +16,7 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">        
         <link rel="stylesheet" href="{{ asset('css/inicioSesion.css') }}">
         <link rel="stylesheet" href="{{ asset('css/registro.css') }}">
-        <link rel="icon" href="img/LOGOsolito.png">
+        <link rel="icon" href="img/logocanguro.png">
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>

@@ -3,14 +3,15 @@
     @section('content')
         <div class="container divInterno">
                 <div class="row">
-                    <div class="imagen">
+                    <div class="imagen2">
                         <div class="mt-5 ml-5">
                             <section>
                                 <div>
-                                    <img src="../img/bigblanco.png" alt="" width="150px">
+                                    <img src="../img/logo.png" alt="" width="60%">
                                 </div>
                             </section>
                             <section>
+                                <br><br>
                                 <h3 class=" letraImagen">!No te has registrado!</h3>
                             </section>
                             <div class="textoicon">
@@ -37,7 +38,8 @@
                     </div>
 
                     <!-- div derecho imagen and texto  -->
-                    <div class="col-lg-6  p-5 ">
+    
+                    <div class="col-lg-6  p-5 " style=" background: linear-gradient(to right, #0c082ca9, #0c082ca9, #0c082ca9), url(../img/orange.jpg);">
                         <!-- parte del logo  -->
 
                         <!-- titulo principal -->

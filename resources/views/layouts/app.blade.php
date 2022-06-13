@@ -18,7 +18,7 @@ use \App\Http\Controllers\ProductController;
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
-        <link rel="icon" href="img/LOGOsolito.png">
+        <link rel="icon" href="img/logocanguro.png">
         <link rel="stylesheet" href="{{ asset('css/principal.css') }}">        
 
         <link rel="stylesheet" href="{{ asset('css/imagenS.css') }}">

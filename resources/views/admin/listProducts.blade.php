@@ -11,7 +11,7 @@
  <!--    TOP NAV START==================================-->
         
     <div class="topnav">
-        <span class="brand-logo"><a href="{{ route('users.index')}}"><img src="../../img/LOGOsolito.png" width="25" height="25"> </a></span>
+        <span class="brand-logo"><a href="{{ route('users.index')}}"><img src="../../img/logocanguro.png" width="25" height="25"> </a></span>
         <div class="topnav-right">
             <span id="colornav" class="social">
                 <a href="#twitter"><i class="fas fa-user-ninja"></i></a>
@@ -71,7 +71,7 @@
  <br>
    
 <center>
-    <h1 style =" color: orange; ">LISTADO DE PRODUCTOS DONADOS</h1><br>
+    <h1 style =" color: #a87bc7; ">LISTADO DE PRODUCTOS DONADOS</h1><br>
 <!-- <a href="Cnuevoproducto.php" style =" color: orange; ">NUEVO PRODUCTO</a> -->
 </center>
 <div class="container">
@@ -103,7 +103,7 @@
                 </td>
                 <td>
 
-                    <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#editarProducto{{$product->id}}"  id="colorbuttom" class="btn btn-primary">Editar
+                    <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#editarProducto{{$product->id}}"  id="colorbuttomAd" class="btn btn-primary">Editar
                     </button>
                    
                 </td>
@@ -121,7 +121,7 @@
         <br><br>
 @if (isset($outputs))
 <center>
-    <h1 style =" color: orange; ">LISTADO DE PRODUCTOS QUE SALEN</h1><br>
+    <h1 style =" color: #a87bc7; ">LISTADO DE PRODUCTOS QUE SALEN</h1><br>
 
 </center>
 <div class="container">
@@ -153,7 +153,7 @@
                     </td>
                      <td>
 
-                        <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#editarProducto{{$product->id}}"  id="colorbuttom" class="btn btn-primary">Editar
+                        <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#editarProducto{{$product->id}}"  id="colorbuttomAd" class="btn btn-primary">Editar
                     </button>
                    
                     </td>
@@ -163,9 +163,11 @@
         </tbody>
     </table>
     </div>
+    <br>
      <center>      
         <a href="{{ route('products.pdf',$id=2) }}" id="colorbuttom" class="btn btn-warning ">GENERAR REPORTE</a> 
     </center> 
+    <br>
 @endif
     @include('layouts.plantilla.footer') 
 @endsection

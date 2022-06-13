@@ -6,7 +6,7 @@
     
     <div class="contenedor-3">
         <center>
-            <h1 style =" color: orange; ">LISTADO DE PRODUCTOS</h1><br>
+            <h1 class="tituloList">LISTADO DE PRODUCTOS</h1><br>
         <!-- <a href="Cnuevoproducto.php" style =" color: orange; ">NUEVO PRODUCTO</a> -->
         </center>
     <table class="table table-borderless" style =" color: white; ">
@@ -47,7 +47,7 @@
                                     <input id="exchange_id" class="form-control" type="number" name="exchange_id"  value="{{ $exchange_id }}">
                                 @endif    
                             </div>
-                            <input type="submit" value="Intercambiar" class="btn btn-warning">
+                            <input type="submit" value="Intercambiar" id="colorbuttom2" class="btn btn-warning">
                         </form>
                     </td>
                 </tr>

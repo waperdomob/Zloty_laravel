@@ -8,7 +8,7 @@
     <nav id="menu" class="navbar navbar-expand-lg fixed-top bg-pink">
         <div class="container">
             <a class="navbar-brand" href="{{ route('users.index')}}">
-                <img src="img/bigblanco.png" alt="" height="80px" width="160px">
+                <img src="img/logocanguro.png" alt="" width="80%">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -148,7 +148,8 @@
 
     <!-- Seccion de Donaciones e Intercambio -->
 
-    <center><img src="img/titulo2.png" alt="Equipo Zloty"></center>
+    <center><h1 class="tituloPortafolio">PORTAFOLIO</h1></center>
+
 </div>
 
 <!--------- secccion del card ------------ -->

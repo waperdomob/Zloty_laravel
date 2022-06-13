@@ -28,12 +28,6 @@ a:hover{
     text-decoration: none;
     color: white;
 }
-/* .colorBoton:hover {
-    text-decoration: none;
-    color: white;
-    background-color: #7a3c02b7;
-    box-shadow: 3px 4px 3px 4px rgba(255, 255, 255, 0.322);
-} */
 
 /* label color con inputs */
 .colorLabel {
@@ -49,23 +43,8 @@ a:hover{
     border: 2px solid #7a3c02b7;
 }
 
-/* contenedor de interno */
-.divInterno {
-    background-color: #27292D;
-    margin-top: 2%;
-    border-radius: 20px;
-    box-shadow: 5px 5px 5px 5px #ec760750;
-}
 
-/* Imagen background de letrero */
-.imagen {
-    width: 50%;
-    background-size: cover;
-    /* background-image: url(../image/compu.jpg); */
-    background: linear-gradient(to right, #b552249d, #7b4d3685, #0c082c81), url(../image/compu.jpg);
 
-    position: relative;
-}
 
 /* posicion del div */
 .caption {
@@ -124,7 +103,7 @@ a:hover{
 
 /* olvidaste la contraseña */
 .fa-key {
-    color: #ec7607f6;
+    color: #a87bc7;
     font-size: 20px;
     margin-top: 5%;
 }
@@ -132,7 +111,7 @@ a:hover{
 .olvidoContrase {
     font-size: 15px;
     margin-top: 50%;
-    color: #ec7607f6;
+    color: #a87bc7;
     font-weight: lighter;
     text-decoration: none;
 
@@ -141,7 +120,7 @@ a:hover{
 .olvidoContrase:hover {
     font-size: 15px;
     margin-top:200px;
-    color: #ec7607f6;
+    color: #a87bc7;
     font-weight: lighter;
     text-decoration: none;
 }

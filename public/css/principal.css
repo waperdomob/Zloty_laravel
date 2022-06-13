@@ -63,13 +63,25 @@
   
   .titulocuadro {
     padding: 35px;
-    color: orangered;
+    color: #734a91;
+    font-family: "Merriweather", "Arvo", Georgia, Times, serif;
+  }
+  .tituloPortafolio {
+    padding: 55px;
+    font-size: 80px;
+    color: #734a91;
+    font-family: "Merriweather", "Arvo", Georgia, Times, serif;
+  }
+  .tituloList {
+    padding: 55px;
+    font-size: 50px;
+    color: #734a91;
     font-family: "Merriweather", "Arvo", Georgia, Times, serif;
   }
   
   .frasecuadro {
     padding: 33px;
-    color: orangered;
+    color: #a87bc7  ;
     text-align: justify;
   }
   
@@ -161,7 +173,7 @@
   }
   
   .colorprincipal:hover {
-    color: rgba(255, 81, 0, 0.719);
+    color: #734a91;
     text-decoration: none;
   }
   
@@ -288,7 +300,7 @@
     height: 100%;
     top: 0;
     transform: scale(0);
-    background-color: rgba(255, 81, 0, 0.719);
+    background-color: #dfb0ffb5;
     transition: transform 0.5;
     display: flex;
     justify-content: center;
@@ -313,18 +325,18 @@
   /* Redes Sociales de la Fundacion */
   
   .cuadrofundacion {
-    border: 5px solid #e45b0d;
+    border: 5px solid #a87bc7;
     padding: 30px 30px;
   }
   
   .fundacion {
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    color: #e45b0d;
+    color: #a87bc7;
     text-align: center;
   }
   
   .iconos {
-    color: #e45b0d;
+    color: #a87bc7;
     margin-left: 23.5%;
   }
   
@@ -335,7 +347,7 @@
   /* footer */
   
   footer {
-    background-color: #232528;
+    background-color: #e0bbf5;
     padding: 60px 0 30px 0;
     margin: auto;
     overflow: hidden;
@@ -402,12 +414,24 @@
     color: #ffffff;
   }
   .colorBoton {
-    background-color: #ec7607f6;
+    background-color: #a87bc7;
     color: aliceblue;
     width: 50%;
     font-size: 18px;
-    margin-left: 15%;
     margin-top: 5%;
+  }
+  #colorbuttom2 {
+    background-color: #a87bc7;
+    color: aliceblue;
+    width: 70%;
+    font-size: 18px;
+    margin-top: 5%;
+  }
+  #colorbuttom {
+    background-color: #a87bc7;
+    color: aliceblue;
+    width: 20%;
+    font-size: 18px;
   }
   /* .colorBoton:hover {
     background-color: #ec7607f6;
@@ -514,11 +538,6 @@
     border: 1px solid  #b3490c;
   }
   
-  #colorboton{
-  
-    background-color: #e45b0d;
-    border: 2px solid #8f3b0b;
-  }
   
   .accordion{
   

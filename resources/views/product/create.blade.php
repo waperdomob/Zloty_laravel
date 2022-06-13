@@ -10,11 +10,13 @@
         <br><br><br><br><br><br><br>
     <div class="row">
     <div class ="col">
+        <br><br><br><br><br><br><br>
+
         <label for="photo" ></label>
         @if (isset($product->image))
             <img src="{{  asset(('storage').'/'.$user->profile_photo_path)}}" alt="{{ Auth::user()->name }}" >
         @else
-            <img class="" src="./../img/bigblanco.png" /> 
+            <img class="" src="./../img/header.png" /> 
         @endif
 
     </div>

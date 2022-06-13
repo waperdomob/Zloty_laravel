@@ -21,7 +21,7 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
 
-    <link rel="icon" href="img/LOGOsolito.png">
+    <link rel="icon" href="img/logocanguro.png">
     
     <title>Zloty - Principal</title>
 
@@ -37,7 +37,7 @@
         <nav id="menu" class="navbar navbar-expand-lg fixed-top bg-pink">
             <div class="container">
                 <a class="navbar-brand" href="{{route('/')}}">
-                    <img src="{{ asset('img/bigblanco.png') }}" alt="" height="80px" width="160px">
+                    <img src="{{ asset('img/logocanguro.png') }}" alt=""  width="80%">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -121,18 +121,23 @@
     </div>
 
 
-    
-        <nav class="navvideo">
-            <center>
-            <video controls="controls" width="80%" poster="video/miniatura.png">
-                <source src="video/videoprincipal.mp4" type="video/mp4" class="videoprincipal"></sourse>
-            </video>
+        <center>
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Ver video
+              </a>
         </center>
-        </nav>
-    
-       
 
-        <center><img src="img/titulo2.png" alt="Equipo Zloty"></center>
+        <div class="collapse" id="collapseExample">
+            <nav class="navvideo" > 
+                <center>
+                <video controls="controls" width="80%" poster="video/miniatura.png" >
+                    <source src="video/videoprincipal.mp4" type="video/mp4" class="videoprincipal"></sourse>
+                </video>
+                </center>
+            </nav>
+        </div>       
+
+        <center><h1 class="tituloPortafolio">PORTAFOLIO</h1></center>
     </div>
 
     <!--------- secccion del card ------------ -->
@@ -148,15 +153,7 @@
 
     <!-- Redes Sociales de la Fundacion -->
 
-    <div class="content-footer-2">
-        <article class="cuadrofundacion">
-                <p class="fundacion">Si desea donar su grano de arena a la Fundación aqui tiene sus Redes Sociales</p>
-                <a class="iconos" href="https://www.facebook.com/fundacionbellaflor"><i class="fab fa-facebook"></i></a>
-                <a class="iconos" href="https://twitter.com/bellaflortw"><i class="fab fa-twitter"></i></a>
-                <a class="iconos" href="https://www.instagram.com/fundacion_bella_flor/"><i class="fab fa-instagram"></i></a>
-        </article>
-        <br><br>
-    </div>
+
 
     
     @include('layouts.plantilla.footer')

@@ -65,7 +65,7 @@
                      <button type="button" class="btn btn-primary">Guardar </button> -->
                   <button type="button" class="btn btn-secondary" data-dismiss="modal"><span
                           class="glyphicon glyphicon-remove"></span> Cancel</button>
-                  <button type="submit" id="colornav" class="btn"><span
+                  <button type="submit" id="colornav" class="btn colorbuttomAd"><span
                           class="glyphicon glyphicon-check"></span> Actualizar Ahora</button>
               </div>
               

@@ -9,7 +9,7 @@
         <!--    TOP NAV START==================================-->
         
         <div class="topnav">
-            <span class="brand-logo"><a href="{{ route('users.index')}}"><img src="../img/LOGOsolito.png" width="25" height="25"> </a></span>
+            <span class="brand-logo"><a href="{{ route('users.index')}}"><img src="../img/logocanguro.png" width="25" height="25"> </a></span>
             <div class="topnav-right">
                 <span id="colornav" class="social">
                     <a href="#twitter"><i class="fas fa-user-ninja"></i></a>
@@ -95,9 +95,9 @@
                     
                     <td>
 
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarUsuario{{$user->id}}"  id="colorbuttom" class="btn btn-primary">Editar
+                        <button type="button" class="btn " data-toggle="modal" data-target="#editarUsuario{{$user->id}}"  id="colorbuttomAd" >Editar
                         </button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#delete_{{$user->id}}"  id="colorbuttom" class="btn btn-primary">Eliminar
+                        <button type="button" class="btn" data-toggle="modal" data-target="#delete_{{$user->id}}"  id="colorbuttomAd" >Eliminar
                         </button>
                     
                     </td>
@@ -106,7 +106,9 @@
                 @endforeach
             </tbody>
             </table>
-            <a href="{{ route('users.pdf') }}" type="button" id="colorbuttom" class="btn btn-primary">GENERAR REPORTE</a>
+            <div class="d-grid gap-2 col-4 mx-auto">
+                <a href="{{ route('users.pdf') }}" type="button" id="colorbuttom2" class="btn btn-primary">GENERAR REPORTE</a>
+            </div>
 
         </div>
 

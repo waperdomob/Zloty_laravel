@@ -22,7 +22,7 @@
                 <script src="{{ asset('js/time.js') }}"></script>
             </div>
         </div>
-        <img src="{{  asset('img/bigblanco.png')}}" alt="" width="180px" height="100px">
+        <img src="{{  asset('img/logo.png')}}" alt="" width="15%" >
     </footer>
 
     <!------- js de bootstrap------------------- -->

@@ -18,7 +18,7 @@ body {
     text-decoration: none;
     color: black;
     background-color: rgba(107, 102, 102, 0.5);
-    box-shadow: 3px 4px 3px 4px #ec760750;
+    box-shadow: 3px 4px 3px 4px #734a91;
     width: 50%;
     
 }
@@ -77,10 +77,10 @@ flex-direction: center;
 
 /* contenedor de interno */
 .divInterno {
-    background-color: #27292D;
+    background-color: #e0b0ff;
     margin-top: 1%;
     border-radius: 20px;
-    box-shadow: 5px 5px 5px 5px #ec760750;
+    box-shadow: 5px 5px 5px 5px #734a91;
 }
 
 /* Imagen background de letrero */
@@ -89,6 +89,14 @@ flex-direction: center;
     background-size: cover;
     /* background-image: url(../image/compu.jpg); */
     background: linear-gradient(to right, #0c082ca9, #0c082ca9, #0c082ca9), url(../img/orange.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.imagen2 {
+    width: 50%;
+    background-size: cover;
+    /* background-image: url(../image/compu.jpg); */
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -116,7 +124,7 @@ flex-direction: center;
 }
 
 .fa-check-circle {
-    color: #ec7607e5;
+    color: #e0b0ff;
     font-size: 25px;
     margin-top: 10px;
 }
@@ -132,17 +140,18 @@ flex-direction: center;
 /* boton de registate */
 .colorRegistro {
     margin-left: 30%;
-    border: 2px solid #ec7607f6;
+    border: 2px solid #734a91;
     color: black;
+    background: #734a91;
     width: 35%;
     font-size: 18px;
 }
 
 .colorRegistro:hover {
     margin-left: 30%;
-    background-color: #ec760757;
+    background-color: #734a91;
     color: white;
     width: 35%;
     font-size: 18px;
-    border: 2px solid #ec7607f6;
+    border: 2px solid #734a91;
 }
